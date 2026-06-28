@@ -1,0 +1,157 @@
+/* src/app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 210 40% 98%;
+    --card-foreground: 222.2 84% 4.9%;
+  
+    --popover: 210 40% 98%;
+    --popover-foreground: 222.2 84% 4.9%;
+  
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+  
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+  
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+  
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+  
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    
+    --card: 220 17% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 35 92% 55%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 220 17% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 17% 15%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 35 100% 50%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 17% 20%;
+    --input: 220 17% 20%;
+    --ring: 35 92% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 110%, hsl(var(--accent) / 0.15), transparent),
+    radial-gradient(ellipse 80% 50% at 50% 120%, hsl(30, 95%, 25%, 0.15), transparent),
+    hsl(var(--background));
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--accent) / 0.5);
+  border-radius: 20px;
+  border: 3px solid hsl(var(--background));
+}
+::-webkit-scrollbar-thumb:hover { background-color: hsl(var(--accent)); }
+
+@layer components {
+  .animated-glowing-border { @apply relative; }
+  .animated-glowing-border::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(120deg, transparent, hsl(var(--primary) / 0.8), transparent) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    background-size: 200% 100%;
+    animation: glowing-border 6s linear infinite;
+    pointer-events: none;
+  }
+
+  .animated-glowing-border-themed { @apply relative; }
+  .animated-glowing-border-themed::before {
+    content: ''; position: absolute; inset: -1px; border-radius: inherit;
+    background: linear-gradient(120deg, transparent, hsl(var(--accent)), transparent);
+    background-size: 200% 100%;
+    animation: glowing-border 6s linear infinite; z-index: -1; filter: blur(4px);
+  }
+  .animated-glowing-border-themed::after {
+    content: ''; position: absolute; inset: -1px; border-radius: inherit;
+    background: linear-gradient(120deg, transparent, white, transparent) border-box;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    background-size: 200% 100%;
+    animation: glowing-border 6s linear infinite; pointer-events: none; z-index: -1;
+  }
+
+  .icon-glow-container { @apply relative; }
+  .icon-glow-container .icon-glow-target { @apply transition-all duration-300; }
+  .icon-glow-container:hover .icon-glow-target {
+    @apply text-accent drop-shadow-[0_0_8px_hsl(var(--accent))];
+  }
+
+  .animate-shine {
+    background: linear-gradient(
+      to right,
+      hsl(var(--muted-foreground)) 20%,
+      hsl(var(--foreground)) 40%,
+      hsl(var(--foreground)) 60%,
+      hsl(var(--muted-foreground)) 80%
+    );
+    background-size: 200% auto; color: transparent;
+    background-clip: text; -webkit-background-clip: text;
+    animation: shine 2s linear infinite;
+  }
+
+  /* Optional fallbacks if any plain <img> remain in the app */
+  .cart-row img { width: 160px; height: 120px; object-fit: cover; border-radius: 0.5rem; }
+  .tracking-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; }
+}
+
+@keyframes glowing-border {
+  from { background-position: 200% 50%; }
+  to   { background-position: -200% 50%; }
+}
+
+@keyframes shine {
+  to { background-position: -200% center; }
+}
