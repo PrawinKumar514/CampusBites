@@ -336,7 +336,7 @@ Stores dashboard analytics information.
 ## 🤖 AI Assistant Module
 
 ### Figure 13: AI Chat Interface
-<img width="1902" height="891" alt="image" src="https://github.com/user-attachments/assets/3c76a336-b13f-4e4e-bfc0-e82565845117" />
+<img width="1902" height="886" alt="image" src="https://github.com/user-attachments/assets/6c05e0d5-f447-49af-94af-b79285ae8714" />
 
 ### Figure 14: AI Order Suggestion
 <img width="1905" height="886" alt="image" src="https://github.com/user-attachments/assets/6e7ee0a7-6089-48b1-957e-e4ee48f6f495" />
