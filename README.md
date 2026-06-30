@@ -448,5 +448,5 @@ http://localhost:3000
 **Prawin Kumar C**
 
 - Aspiring Full Stack Developer
-- GitHub: https://github.com/PrawinKumar514 linedin
-- : https://www.linkedin.com/in/prawin-kumar-974a2334b
+- GitHub: https://github.com/PrawinKumar514
+- linedin: https://www.linkedin.com/in/prawin-kumar-974a2334b
